@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Players</h1>
+<%= form_with(url: players_path, method: :get) do |form| %>
+  <%= form.label :query, "Search by name:" %>
+  <%= form.text_field :query, value: params[:query], data: { controller: "player-search", action: "input->player-search#search" } %>
+  <%= form.submit 'Search', name: nil %>
+<% end %>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Contact</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <%= render "players", players: @players %>
+</table>
+
+<br>
+
+<%= link_to 'New Player', new_player_path %>>
