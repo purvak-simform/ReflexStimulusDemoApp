@@ -19,6 +19,7 @@ Things you may want to cover:
 Demo application showing us a working of StimulusReflex with rails 7. Followed Steps to create a demo
 
 1. created a rails new app
+    ```
     rails new ReflexStimulusDemoApp --database=postgresql
 
 2. Created gemset using rbenv following are the commands
