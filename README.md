@@ -94,3 +94,4 @@ Followed links for understanding
 1. https://docs.stimulusreflex.com/hello-world/quickstart
 2. https://www.colby.so/posts/live-search-with-rails-and-stimulusreflex
 3. https://blog.minthesize.com/stimulus-reflex-importmaps
+4. https://www.colby.so/posts/real-time-previews-with-stimulus-reflex
