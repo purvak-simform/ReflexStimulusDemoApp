@@ -32,8 +32,9 @@ class PlayerSearchReflex < ApplicationReflex
   #   end
   #
   # Learn more at: https://docs.stimulusreflex.com/rtfm/reflex-classes
-  def search
-    players = Player.where('name LIKE ?', "%#{params[:query]}%")
-    morph '#players-list', render(partial: 'players/players', locals: { players: players })
+  def search(query = '')
+    players = Player.where('name LIKE ?', "%#{query}%")
+    morph '#players-list', render(partial: 'players/players', locals: { players: players }) # selector morph
+    morph '#reset-link', render(partial: 'players/reset_link', locals: { query: query })
   end
 end

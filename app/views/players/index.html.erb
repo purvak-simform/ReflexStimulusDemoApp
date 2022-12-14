@@ -1,11 +1,24 @@
 <p id="notice"><%= notice %></p>
+<%#Reflex via  Page Morph %>
+<a href="#"
+   data-reflex="click->Counter#increment"
+   data-step="1"
+   data-count="<%= @count.to_i %>">
+  Increment <%= @count.to_i %>
+</a>
 
+<%#Reflex via  Selector Morph %>
 <h1>Players</h1>
-<%= form_with(url: players_path, method: :get) do |form| %>
-  <%= form.label :query, "Search by name:" %>
-  <%= form.text_field :query, value: params[:query], data: { controller: "player-search", action: "input->player-search#search" } %>
-  <%= form.submit 'Search', name: nil %>
-<% end %>
+<div data-controller="player-search">
+  <%= form_with(method: :get) do |form| %>
+    <%= form.label :query, "Search by name:" %>
+    <%= form.text_field :query, value: params[:query], data: { controller: "player-search", action: "input->player-search#search" }, autocomplete: "off" %>
+    <%#= form.submit 'Search', name: nil %>
+  <% end %>
+  <div id="reset-link">
+    <%= render "reset_link", query: params[:query] %>
+  </div>
+</div>
 <table>
   <thead>
     <tr>
@@ -21,4 +34,4 @@
 
 <br>
 
-<%= link_to 'New Player', new_player_path %>>
+<%= link_to 'New Player', new_player_path %>
