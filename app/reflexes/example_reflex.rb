@@ -33,4 +33,22 @@ class ExampleReflex < ApplicationReflex
   #
   # Learn more at: https://docs.stimulusreflex.com/rtfm/reflex-classes
 
+  def words
+    @words = element[:value]
+  end
+
+  def change_player_message
+    morph "#foo", "Your muscles... they are so tight."
+  end
+
+  def toggle
+    player = Player.find(element.dataset[:id])
+    player.update(joined_at: (player.joined_at? ? nil : Time.current))
+  end
+ # realtime validation on name in Player
+  def playerform
+    @player = Player.new(name: dataset[:value])
+    @player.valid?
+  end
+
 end

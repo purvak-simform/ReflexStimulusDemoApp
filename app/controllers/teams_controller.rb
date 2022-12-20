@@ -6,7 +6,6 @@ class TeamsController < ApplicationController
     @teams = Team.all
   end
 
-  # GET /teams/1 or /teams/1.json
   def show
   end
 

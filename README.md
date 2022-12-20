@@ -6,6 +6,8 @@ Things you may want to cover:
 
 * Rails 7
 
+* Tailswind css
+
 * Steps for setup Database Initialization
 
   1. Set variable in .env,  gem used 'dotenv-rails' Example file rename .env.example to .env
@@ -87,6 +89,15 @@ Demo application showing us a working of StimulusReflex with rails 7. Followed S
 10. rails g scaffold Player name:string age:integer contact:integer --no-jbuilder
 
 11. rails g stimulus_reflex PlayerSearch
+
+12. bundle add tailwindcss-rails
+
+13. rails tailwindcss:install
+
+
+Run server in dev environment 
+
+./bin/dev
 
 
 

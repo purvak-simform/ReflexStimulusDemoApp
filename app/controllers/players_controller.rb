@@ -1,37 +1,17 @@
 class PlayersController < ApplicationController
   before_action :set_player, only: %i[ show edit update destroy ]
 
-  # GET /players or /players.json
   def index
-    @players ||= Player.all
+    @players ||= Player.includes(:teams).all.order(:created_at)
+    @player ||= Player.new
   end
 
-  # GET /players/1 or /players/1.json
-  def show
-  end
-
-  # GET /players/new
-  def new
-    @player = Player.new
-  end
-
-  # GET /players/1/edit
   def edit
   end
 
-  # POST /players or /players.json
   def create
-    @player = Player.new(player_params)
-
-    respond_to do |format|
-      if @player.save
-        format.html { redirect_to player_url(@player), notice: "Player was successfully created." }
-        format.json { render :show, status: :created, location: @player }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @player.errors, status: :unprocessable_entity }
-      end
-    end
+    @player = Player.create(player_params)
+    redirect_to players_path
   end
 
   # PATCH/PUT /players/1 or /players/1.json
@@ -50,11 +30,7 @@ class PlayersController < ApplicationController
   # DELETE /players/1 or /players/1.json
   def destroy
     @player.destroy
-
-    respond_to do |format|
-      format.html { redirect_to players_url, notice: "Player was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    redirect_to players_url, status: :see_other
   end
 
   private
@@ -65,6 +41,6 @@ class PlayersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def player_params
-      params.require(:player).permit(:name, :age, :contact)
+      params.require(:player).permit(:name, :age, :contact, :bio)
     end
 end

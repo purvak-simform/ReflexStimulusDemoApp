@@ -16,5 +16,6 @@ eagerLoadControllersFrom("controllers", application)
 
 // initialize StimulusReflex w/top-level await
 const consumer = await cable.getConsumer()
-StimulusReflex.initialize(application, { consumer, debug: true });
+application.consumer = consumer
+StimulusReflex.initialize(application, { debug: true });
 // CableReady.initialize({ consumer })

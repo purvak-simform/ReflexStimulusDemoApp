@@ -63,9 +63,10 @@ export default class extends ApplicationController {
   //   console.warn("increment halted", element, reflex, reflexId)
   // }
 
-  // afterIncrement(element, reflex, noop, reflexId) {
-  //   console.log("after increment", element, reflex, reflexId)
-  // }
+  afterIncrement(element, reflex, noop, reflexId) {
+    console.log("after increment", element, reflex, reflexId)
+    console.log('Button has been deleted!')
+  }
 
   // finalizeIncrement(element, reflex, noop, reflexId) {
   //   console.log("finalize increment", element, reflex, reflexId)
